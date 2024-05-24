@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "express": "^4.19.2",
+    "prisma": "^5.14.0",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "name": "y",
+  "version": "y",
+  "description": "y",
+  "main": "y",
+  "repository": "y",
+  "author": "y",
+  "license": "y",
+  "private": true,
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -12,3 +12,40 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
+model Users {
+  userId    Int    @id @default(autoincrement()) @map("userId")
+  email     String @unique @map("email")
+  name      String @map("name")
+  password  String @map("password")
+  role      String @default("APPLICANT") @map("role")
+  createAt  DateTime @default(now()) @map("createAt")
+  updateAt  DateTime @default(now()) @map("updateAt")
+  Resumes   Resumes[]
+  @@map("Users")
+}
+
+model Resumes {
+  resumeId  Int    @id @default(autoincrement()) @map("resumeId")
+  userId    Int    @map("userId")
+  title     String @map("title")
+  comment   String @map("comment")
+  status    String @default("APPLY") @map("status")
+  createAt  DateTime @default(now()) @map("createAt")
+  updateAt  DateTime @default(now()) @map("updateAt")
+  
+  
+  User      Users @relation(fields: [userId], references: [userId])
+
+  @@map("Resumes")
+}
+
+enum ApplyStatus {
+  APPLY
+  DROP
+  PASS
+  INTERVIEW1
+  INTERVIEW2
+  FINAL_PASS
+}
